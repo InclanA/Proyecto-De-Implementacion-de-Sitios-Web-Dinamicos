@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Producto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container product-detail">
+    <header>
+      <nav>
+        <a href="index.html">Volver</a>
+        <a href="carrito.html">Carrito (<span id="cart-count">0</span>)</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1 id="product-name">Producto</h1>
+      <img id="product-image" src="" alt="" style="max-width:100%;border-radius:6px">
+      <p id="product-description" class="muted"></p>
+      <p id="product-price" class="price"></p>
+      <div class="row">
+        <button id="add-to-cart" class="btn">Agregar al carrito</button>
+        <button class="btn secondary" onclick="location.href='index.html'">Volver</button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const params = Object.fromEntries(new URLSearchParams(location.search));
+    const readCart = ()=>JSON.parse(localStorage.getItem('cart')||'[]');
+    const saveCart = c=>localStorage.setItem('cart',JSON.stringify(c));
+    const updateCartCount = ()=>{const el=document.getElementById('cart-count'); if(el) el.textContent=readCart().length};
+    const addToCart = p=>{const c=readCart(); c.push(p); saveCart(c); updateCartCount(); alert('Agregado al carrito')};
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      updateCartCount();
+      document.getElementById('product-name').textContent = params.name || 'Producto';
+      document.getElementById('product-description').textContent = params.description || '';
+      document.getElementById('product-price').textContent = params.price ? ('Precio: ' + params.price) : '';
+      const img = document.getElementById('product-image'); if(params.img) img.src = params.img; else img.style.display='none';
+      document.getElementById('add-to-cart').addEventListener('click', ()=>{
+        addToCart({name: params.name, description: params.description, price: params.price, img: params.img});
+      });
+    });
+  </script>
+</body>
+</html>

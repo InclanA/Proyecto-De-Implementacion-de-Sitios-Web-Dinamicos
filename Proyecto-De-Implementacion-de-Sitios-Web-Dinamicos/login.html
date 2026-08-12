@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login">
+    <form id="form">
+        <h1>Iniciar Sesion</h1>
+        <br>
+        <p>¿Todavia no tienes cuenta? <a href="register.html">registrarse</a></p>
+        <br>
+        <div class="email">
+            <h2>Email</h2>
+            <input type="email" id="gmail" required>
+        </div>
+        <div class="contraseña">
+            <h2>Contraseña</h2>
+            <input type="password" id="pass" required>
+        </div>
+        <button type="submit" id="guardar">Guardar</button>
+    </form>
+
+    <script>
+        const form = document.getElementById("form");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById("gmail").value.trim();
+            const password = document.getElementById("pass").value.trim();
+
+            const usuario = JSON.parse(localStorage.getItem("usuarioRegistrado"));
+
+            if (!usuario) {
+                alert("No hay ningún usuario registrado.");
+                return;
+            }
+
+            if (email === usuario.email && password === usuario.password) {
+                alert("Login correcto");
+                window.location.href = "index.html";
+            } else {
+                alert("Email o contraseña incorrectos");
+            }
+    
+        });
+    </script>
+</body>
+</html>

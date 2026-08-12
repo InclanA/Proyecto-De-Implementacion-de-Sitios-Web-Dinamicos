@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Carrito</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cart {
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 16px;
+        }
+        .cart-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 12px 0;
+        }
+        .cart-item img { width: 90px; height: auto; }
+        .cart-item .info { flex: 1; }
+        .cart-actions { margin-top: 18px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="index.html">Productos</a>
+                <a href="carrito.html">Carrito (<span id="cart-count">0</span>)</a>
+            </nav>
+        </header>
+
+        <main class="cart">
+            <h1>Tu carrito</h1>
+            <div id="cart-items"></div>
+            <p id="cart-empty" class="muted" style="display:none">Tu carrito está vacío.</p>
+            <p><strong>Total:</strong> <span id="cart-total">$0</span></p>
+            <div class="cart-actions">
+                <button id="clear-cart" class="btn secondary">Vaciar carrito</button>
+                <button id="checkout" class="btn">Comprar</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+    const readCart = ()=>JSON.parse(localStorage.getItem('cart')||'[]');
+    const saveCart = c=>localStorage.setItem('cart',JSON.stringify(c));
+    const updateCartCount = ()=>{const el=document.getElementById('cart-count'); if(el) el.textContent=readCart().length};
+
+    function renderCart(){
+      const itemsEl=document.getElementById('cart-items'); const emptyEl=document.getElementById('cart-empty'); const totalEl=document.getElementById('cart-total');
+      const cart=readCart(); itemsEl.innerHTML=''; if(!cart.length){ emptyEl.style.display='block'; totalEl.textContent='$0'; updateCartCount(); return }
+      emptyEl.style.display='none'; let total=0; cart.forEach((item,i)=>{
+        const div=document.createElement('div'); div.className='cart-item'
+        div.innerHTML = `<img src="${item.img||''}" alt=""><div class="info"><div>${item.name||''}</div><div class="muted">${item.description||''}</div><div class="price">${item.price||''}</div></div><div><button class="btn" data-i="${i}">Quitar</button></div>`;
+        itemsEl.appendChild(div);
+        const num = parseFloat((item.price||'').replace(/[^0-9,.]/g,'').replace(',','.'))||0; total+=num;
+      });
+      totalEl.textContent = total?('$'+total.toLocaleString()):'$0'; updateCartCount();
+    }
+
+    function removeItem(i){ const c=readCart(); c.splice(i,1); saveCart(c); renderCart(); }
+    function clearCart(){ if(!confirm('¿Vaciar carrito?')) return; saveCart([]); renderCart(); alert('Carrito vaciado') }
+    function checkout(){ const c=readCart(); if(!c.length){ alert('Carrito vacío'); return } if(!confirm('Confirmar compra?')) return; saveCart([]); renderCart(); alert('Compra realizada'); location.href='index.html' }
+
+    document.addEventListener('click', (e)=>{
+      if(e.target.matches('#clear-cart')) clearCart();
+      if(e.target.matches('#checkout')) checkout();
+      if(e.target.matches('[data-i]')) removeItem(Number(e.target.dataset.i));
+    });
+
+    document.addEventListener('DOMContentLoaded', ()=>{ renderCart(); updateCartCount(); });
+    </script>
+</body>
+</html>
