@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+<main>
+<header>
+    <a href="../index.html">
+    <img src="../img/logo.png" >
+    </a>
+</header>
+
+<section>
+<form id="formulario">
+    <h1>Iniciar Sesion</h1>
+    <p>Todavia no tienes cuenta? <a href="register.html">registrarse</a></p>
+<div>
+    <label>email</label>
+    <input type="email" id="gmail" required>
+</div>
+<div>
+    <label>contraseña</label>
+    <input type="password" id="contraseña" required>
+</div>  
+    <button type="submit" id="guardar">Guardar</button>
+</form>
+</section>
+</main>
+
+<script>
+    const form = document.getElementById("formulario");
+    form.addEventListener("submit", function(grupo1) {
+        grupo1.preventDefault();
+
+    const email = document.getElementById("gmail").value.trim();
+    const contraseña = document.getElementById("contraseña").value.trim();
+
+    const usuario = JSON.parse(localStorage.getItem("registrado"));
+
+        if (!usuario) {
+            alert("no hay ningún usuario registrado con este correo");
+                return;
+        }
+
+        if (email === usuario.email && contraseña === usuario.password) {
+            alert("tu login es correcto");
+                window.location.href = "../index.html";
+        } else {
+                alert("tu email o tambien contraseña son incorrectos trata de colocarlas bien");
+        }
+    });
+</script>
+</body>
+</html>
