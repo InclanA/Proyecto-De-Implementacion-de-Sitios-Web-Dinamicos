@@ -4,93 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="./script.js"></script>
 </head>
 
 <body>
 <header>
-    <nav>
-        <a href="#">Productos</a> |
-        <a href="#">Ofertas</a> 
-    </nav>
+    <img src="./img/logo.png">
 </header>
-
-<hr>
+ <nav>
+    <a href="./html/login.html">Login</a>
+    <a href="./html/carrito.html">Carrito(<span id="cart-count">0</span>)</a>
+</nav>
 
 <section>
-    <h2>Componentes para tu PC</h2>
-        <img src="./img/BANNER.png">
+    <img src="./img/BANNER.png">
 </section>
-<hr>
+<main  id="producto">
+<article class="producto" data-nombre="AMD Ryzen 7 7800X3D" data-precio="650.000" data-img="../img/Ryzen7.png">
+    <h3>AMD Ryzen 7 7800X3D</h3>
+    <img src="./img/Ryzen7.png">
+    <p>Precio: $650,000</p>
+    <button class="agregar-carrito">Agregar al carrito</button>
+</article>
 
-<main>
-    <h2>Lista de Componentes</h2>
-    <article>
-        <h3>AMD Ryzen 7 7800X3D</h3>
+<article class="producto" data-nombre="NVIDIA GeForce RTX 4070" data-precio="1.500.000" data-img="../img/RTX.png">
+    <h3>NVIDIA GeForce RTX 4070</h3>
+    <img src="./img/RTX.png">
+    <p>Precio: $1,500,000</p>
+    <button class="agregar-carrito">Agregar al carrito</button>
+</article>
+<article class="producto" data-nombre="Corsair Vengeance 32GB DDR5" data-precio="$$380.000" data-img="../img/RAM.png">
+    <h3>Corsair Vengeance 32GB DDR5</h3>
+    <img src="./img/RAM.png">
+    <p>Precio: $380.000</p>
+    <button class="agregar-al-carrito">Agregar al carrito</button>
+</article>
 
-            <img
-                src="./img/Ryzen7.png"
-            >
+<article class="producto" data-nombre="SSD NVMe 1TB" data-precio="220000" data-img="../img/SSD.png">
+    <h3>SSD NVMe 1TB</h3>
+    <img src="./img/SSD.png">
+    <p>Precio: $220.000</p>
+    <button class="agregar-carrito">Agregar al carrito</button>
+</article>
 
-            <p>Procesador AMD Ryzen 7 7800X3D.</p>
-            <p>Precio: $450.000</p>
+<article class="producto" data-nombre="Fuente Corsair 750w RM750e 80 Plus Gold" data-precio="100.000" data-img="../img/FUENTE.png">
+    <h3>Fuente Corsair 750w RM750e 80 Plus Gold</h3>
+    <img src="./img/FUENTE.png">
+    <p>Precio: $100.000</p>
+    <button class="agregar-carrito">Agregar al carrito</button>
+</article>
 
-            <button>Agregar al carrito</button>
-        </article>
+<article class="producto" data-nombre="Placa Madre MSI PRO H610M-G DDR4" data-precio="90.000" data-img="../img/PlacaMadre.png">
+    <h3>Placa Madre MSI PRO H610M-G DDR4</h3>
+    <img src="./img/PlacaMadre.png">
+    <p>Precio: $90.000</p>
+    <button class="agregar-carrito">Agregar al carrito</button>
+</article>
 
-        <hr>
+<article class="producto" data-nombre="Monitor Gamer Level Up Curvo 34 Pulgadas Wqhd Ultrawide 165hz" data-precio="480.000" data-img="../img/monitor.png">
+    <h3>Monitor Gamer Level Up Curvo 34 Pulgadas Wqhd Ultrawide 165hz</h3>
+    <img src="./img/monitor.png">
+    <p>Precio: $480.000</p>
+    <button class="agregar-carrito">Agregar al carrito</button>
+</article>
 
-        <article>
-            <h3>NVIDIA GeForce RTX 4070</h3>
+<article class="producto" data-nombre="Ajazz AK820" data-precio="150.000" data-img="../img/teclado.png">
+    <h3>Ajazz AK820</h3>
+    <img src="./img/teclado.png">
+    <p>Precio: $150.000</p>
+    <button class="agregar-carrito">Agregar al carrito</button>
+</article>
 
-            <img
-                src="./img/RTX.png"
-            >
+<article class="producto" data-nombre="AJAZZ AJ199" data-precio="130.000" data-img="../img/mouse.png">
+    <h3>AJAZZ AJ199</h3>
+    <img src="./img/mouse.png">
+    <p>Precio: $130.000</p>
+    <button class="agregar-carrito">Agregar al carrito</button>
+</article>
 
-            <p>Placa de video NVIDIA GeForce RTX 4070.</p>
-            <p>Precio: $850.000</p>
+<article class="producto" data-nombre="AMD Radeon RX 9070" data-precio="1.500.000" data-img="../img/rtx.jpg">
+    <h3>AMD Radeon RX 9070</h3>
+    <img src="./img/rtx.jpg">
+    <p>Precio: $1.500.000</p>
+    <button class="agregar-carrito">Agregar al carrito</button>
+</article>
 
-            <button>Agregar al carrito</button>
-        </article>
+<article class="producto" data-nombre="Gabinete" data-precio="330.000" data-img="../img/gabinete.jpg">
+    <h3>Gabinete</h3>
+    <img src="./img/gabinete.jpg">
+    <p>Precio: $330.000</p>
+    <button class="agregar-carrito">Agregar al carrito</button>
+</article>
 
-        <hr>
-
-        
-        <article>
-            <h3>Corsair Vengeance 32GB DDR5</h3>
-
-            <img
-                src="./img/RAM.png"
-            >
-
-            <p>Memoria RAM DDR5 de 32GB.</p>
-            <p>Precio: $180.000</p>
-
-            <button>Agregar al carrito</button>
-        </article>
-
-        <hr>
-
-        
-        <article>
-            <h3>SSD NVMe 1TB</h3>
-
-            <img
-                src="./img/SSD.jpg"
-            >
-
-            <p>Almacenamiento SSD NVMe de 1TB.</p>
-            <p>Precio: $120.000</p>
-
-            <button>Agregar al carrito</button>
-    </article>
-
-</main>
-    <hr>
+<article class="producto" data-nombre="NVIDIA GeForce RTX 5070" data-precio="1.650.000" data-img="zs.png">
+    <h3>NVIDIA GeForce RTX 5070</h3>
+    <img src="./img/zs.png">
+    <p>Precio: $1.650.000</p>
+    <button class="agregar-carrito">Agregar al carrito</button>
+</article>
 <footer>
-    <p>Venta de Hardawer</p>
-    <p>Contacto: inclanxd@gmail.com</p>
+    <p>&copy; 2026 Inclan y Gauna - venta de hardware</p>
 </footer>
-
+</main>
 </body>
 </html>
 
