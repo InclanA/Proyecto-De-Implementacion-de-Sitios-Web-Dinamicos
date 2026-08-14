@@ -22,7 +22,7 @@
     <h2>Total de compra</h2>
     <p>Total: $<span id="total"></span></p>
     <button onclick="vaciar()">Vaciar carrito</button>
-    <button>Comprar</button>
+    <button onclick="comprar()">Comprar</button>
 </section>
 </main>
 
@@ -66,6 +66,11 @@ function quitar(i) {
 function vaciar() {
     guardarCarrito([]);
     mostrarCarrito();
+}
+
+function comprar() {
+    alert("gracias por su compra hijo de mil puta");
+    vaciar();
 }
 mostrarCarrito();
 </script>
