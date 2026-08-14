@@ -52,7 +52,7 @@ function mostrarCarrito() {
             <hr>
         </div>
     `;
-    total = total + Number(carrito[i].precio);
+    total += Number(carrito[i].precio) || 0;
 }
     document.getElementById("total").innerText = total;
 }
